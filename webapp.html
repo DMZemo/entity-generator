@@ -1,0 +1,1326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity Generator - D&D 5e Content Creation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #fdfaef;
+            color: #333333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #2F4F4F;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Controls Section */
+        .controls {
+            background: #f5f5f5;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .mode-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .mode-btn {
+            background: #ffffff;
+            border: 2px solid #2F4F4F;
+            color: #2F4F4F;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 60px;
+        }
+
+        .mode-btn:hover {
+            background: #2F4F4F;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(47, 79, 79, 0.3);
+        }
+
+        .mode-btn:active {
+            transform: translateY(0);
+        }
+
+        .mode-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Object Controls */
+        .object-controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-control label {
+            font-weight: 500;
+            color: #2F4F4F;
+        }
+
+        .quantity-control input {
+            width: 80px;
+            padding: 8px 12px;
+            border: 2px solid #2F4F4F;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        /* Biome Selection */
+        .biome-controls {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .biome-controls.active {
+            display: flex;
+        }
+
+        .biome-controls select {
+            padding: 8px 15px;
+            border: 2px solid #2F4F4F;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: white;
+            min-width: 150px;
+        }
+
+        /* Results Section */
+        .results {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+            min-height: 200px;
+        }
+
+        .results-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2F4F4F;
+        }
+
+        .results-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #2F4F4F;
+            margin-bottom: 5px;
+        }
+
+        .results-header .timestamp {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .entity {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2F4F4F;
+        }
+
+        .entity:last-child {
+            margin-bottom: 0;
+        }
+
+        .entity h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #2F4F4F;
+            margin-bottom: 15px;
+        }
+
+        .entity-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .stat-group {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .stat-group h4 {
+            color: #2F4F4F;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-list {
+            list-style: none;
+        }
+
+        .stat-list li {
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .stat-list strong {
+            color: #2F4F4F;
+            font-weight: 500;
+        }
+
+        .placeholder {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            font-size: 1.1rem;
+            padding: 60px 20px;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            color: #2F4F4F;
+            font-style: italic;
+            padding: 40px 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2F4F4F;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .controls {
+                padding: 20px;
+            }
+
+            .mode-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .object-controls,
+            .biome-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .entity-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .mode-btn {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+
+            .results {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Entity Generator</h1>
+            <p>Bring your world to life. Select a category to generate a new entity for your D&D campaign.</p>
+        </header>
+
+        <!-- Controls -->
+        <section class="controls">
+            <div class="mode-buttons">
+                <button class="mode-btn" onclick="generateEntity('flora')">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                    </svg>
+                    Generate Flora
+                </button>
+                
+                <button class="mode-btn" onclick="generateEntity('fauna')">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4.5,11C5.33,11 6,11.67 6,12.5C6,13.33 5.33,14 4.5,14C3.67,14 3,13.33 3,12.5C3,11.67 3.67,11 4.5,11M9,9C9.83,9 10.5,9.67 10.5,10.5C10.5,11.33 9.83,12 9,12C8.17,12 7.5,11.33 7.5,10.5C7.5,9.67 8.17,9 9,9M15,9C15.83,9 16.5,9.67 16.5,10.5C16.5,11.33 15.83,12 15,12C14.17,12 13.5,11.33 13.5,10.5C13.5,9.67 14.17,9 15,9M19.5,11C20.33,11 21,11.67 21,12.5C21,13.33 20.33,14 19.5,14C18.67,14 18,13.33 18,12.5C18,11.67 18.67,11 19.5,11M12,14C12.83,14 13.5,14.67 13.5,15.5C13.5,16.33 12.83,17 12,17C11.17,17 10.5,16.33 10.5,15.5C10.5,14.67 11.17,14 12,14Z"/>
+                    </svg>
+                    Generate Fauna
+                </button>
+                
+                <button class="mode-btn" onclick="generateEntity('humanoid')">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
+                    </svg>
+                    Generate Humanoid
+                </button>
+                
+                <button class="mode-btn" onclick="toggleBiomeControls()">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14,6L10.25,11L13.1,14.8L11.5,16C9.81,13.75 7,10 7,10L1,18H23L14,6Z"/>
+                    </svg>
+                    Generate by Biome
+                </button>
+                
+                <button class="mode-btn" onclick="generateEntity('random')">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"/>
+                    </svg>
+                    Generate Random
+                </button>
+                
+                <button class="mode-btn" onclick="generateEntity('object')">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6,2L3,6V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V6L18,2H6M12,4L14.25,6H9.75L12,4M5,8H19V20H5V8Z"/>
+                    </svg>
+                    Generate Objects
+                </button>
+            </div>
+
+            <!-- Biome Selection -->
+            <div class="biome-controls" id="biomeControls">
+                <label for="biomeSelect">Select Biome:</label>
+                <select id="biomeSelect">
+                    <option value="">All Biomes</option>
+                    <option value="ATMOSPHERE">Atmosphere</option>
+                    <option value="DESERT">Desert</option>
+                    <option value="FOREST">Forest</option>
+                    <option value="GRASSLAND">Grassland</option>
+                    <option value="MOUNTAINS">Mountains</option>
+                    <option value="CAVE">Cave</option>
+                    <option value="COAST">Coast</option>
+                    <option value="JUNGLE">Jungle</option>
+                    <option value="OCEAN">Ocean</option>
+                    <option value="SWAMP">Swamp</option>
+                    <option value="TUNDRA">Tundra</option>
+                    <option value="UNDERDARK">Underdark</option>
+                    <option value="URBAN">Urban</option>
+                    <option value="WETLAND">Wetland</option>
+                </select>
+                <button class="mode-btn" onclick="generateBiomeEntity()" style="width: auto; min-height: auto; padding: 8px 20px;">
+                    Generate
+                </button>
+            </div>
+
+            <!-- Object Quantity Control -->
+            <div class="object-controls">
+                <div class="quantity-control">
+                    <label for="objectQuantity">Number of Objects:</label>
+                    <input type="number" id="objectQuantity" min="1" max="10" value="1">
+                </div>
+            </div>
+        </section>
+
+        <!-- Results -->
+        <section class="results">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Generating your entity...</p>
+            </div>
+            
+            <div class="placeholder" id="placeholder">
+                Your generated results will appear here...
+            </div>
+            
+            <div id="resultsContent"></div>
+        </section>
+    </div>
+
+    <script>
+        // Embedded JSON Data
+        const entityData = [
+  {
+    "Biome": "ATMOSPHERE",
+    "Encounter Type": "FAUNA",
+    "Species": "Blood Hawk",
+    "Size": "Small",
+    "Creature Type": "Beast",
+    "Tags": null,
+    "Alignment": "Unaligned",
+    "XP": 25,
+    "CR": 0.125,
+    "Prof": 2.0,
+    "AC": 13.0,
+    "HP": "(7, 35)",
+    "ATK": 3.0,
+    "DPR": "(2, 3)",
+    "DC": 13.0
+  },
+  {
+    "Biome": "ATMOSPHERE",
+    "Encounter Type": "FAUNA",
+    "Species": "Non_Humanoid.Beast.Winged.Avian",
+    "Size": "Small",
+    "Creature Type": "Beast",
+    "Tags": "4.1.2.1",
+    "Alignment": "Unaligned",
+    "XP": 200,
+    "CR": 1,
+    "Prof": 2.0,
+    "AC": 13.0,
+    "HP": "(71, 85)",
+    "ATK": 3.0,
+    "DPR": "(9, 14)",
+    "DC": 13.0
+  },
+  {
+    "Biome": "ATMOSPHERE",
+    "Encounter Type": "FLORA",
+    "Species": "Non_Humanoid.Plant.Ordinary",
+    "Size": "Medium",
+    "Creature Type": "Plant",
+    "Tags": "4.2.1",
+    "Alignment": "Unaligned",
+    "XP": 25,
+    "CR": 0.125,
+    "Prof": 2.0,
+    "AC": 10.0,
+    "HP": "(3, 4)",
+    "ATK": 0.0,
+    "DPR": "(0, 0)",
+    "DC": 10.0
+  },
+  {
+    "Biome": "FOREST",
+    "Encounter Type": "FAUNA",
+    "Species": "Wolf",
+    "Size": "Medium",
+    "Creature Type": "Beast",
+    "Tags": null,
+    "Alignment": "Unaligned",
+    "XP": 50,
+    "CR": 0.25,
+    "Prof": 2.0,
+    "AC": 13.0,
+    "HP": "(11, 20)",
+    "ATK": 4.0,
+    "DPR": "(7, 8)",
+    "DC": 11.0
+  },
+  {
+    "Biome": "FOREST",
+    "Encounter Type": "FLORA",
+    "Species": "Treant",
+    "Size": "Huge",
+    "Creature Type": "Plant",
+    "Tags": null,
+    "Alignment": "Chaotic Good",
+    "XP": 5000,
+    "CR": 9,
+    "Prof": 4.0,
+    "AC": 16.0,
+    "HP": "(138, 195)",
+    "ATK": 10.0,
+    "DPR": "(28, 35)",
+    "DC": 15.0
+  },
+  {
+    "Biome": "FOREST",
+    "Encounter Type": "HUMANOID",
+    "Species": "Bandit",
+    "Size": "Medium",
+    "Creature Type": "Humanoid",
+    "Tags": null,
+    "Alignment": "Chaotic Evil",
+    "XP": 25,
+    "CR": 0.125,
+    "Prof": 2.0,
+    "AC": 12.0,
+    "HP": "(11, 12)",
+    "ATK": 3.0,
+    "DPR": "(5, 6)",
+    "DC": 10.0
+  }
+];
+
+        const humanoidData = {
+            "humanoids": [
+                "Human-Basic", "Elf-High", "Elf-Wood", "Elf-Dark", "Dwarf-Hill", "Dwarf-Mountain", 
+                "Halfling-Lightfoot", "Halfling-Stout", "Dragonborn", "Gnome-Forest", "Gnome-Rock", 
+                "Half-Elf", "Half-Orc", "Tiefling", "Aasimar", "Genasi-Air", "Genasi-Earth", 
+                "Genasi-Fire", "Genasi-Water", "Goliath", "Tabaxi", "Triton", "Firbolg", 
+                "Kenku", "Lizardfolk", "Tortle", "Bugbear", "Goblin", "Hobgoblin", "Kobold", 
+                "Orc", "Yuan-ti", "Aarakocra", "Githyanki", "Githzerai", "Deep Gnome", 
+                "Duergar", "Sea Elf", "Shadar-kai", "Eladrin", "Variant Human", "Custom Lineage",
+                "Fairy", "Harengon", "Owlfolk", "Centaur", "Minotaur", "Satyr", "Changeling",
+                "Kalashtar", "Shifter", "Warforged", "Vedalken", "Simic Hybrid", "Loxodon",
+                "Gith", "Githzerai", "Plasmoid", "Thri-kreen", "Hadozee", "Astral Elf",
+                "Autognome", "Giff", "Hippo", "Leonin", "Locathah"
+            ],
+            "classes": [
+                "Commoner", "Noble", "Expert", "Barbarian", "Bard", "Cleric", "Druid", 
+                "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", 
+                "Wizard", "Artificer", "Blood Hunter"
+            ],
+            "flaws": [
+                "Secretly believes everyone is plotting against them",
+                "Compulsive liar, even about trivial things",
+                "Cannot resist a pretty face",
+                "Obsessed with cleanliness and order",
+                "Prone to sudden violent outbursts",
+                "Gambling addiction ruins financial decisions",
+                "Cowardly when facing real danger",
+                "Arrogant and looks down on others",
+                "Kleptomaniac who steals small items",
+                "Substance abuse issues",
+                "Extremely superstitious about everything",
+                "Cannot keep secrets or confidential information",
+                "Vengeful and holds grudges forever",
+                "Naive and trusts everyone too easily",
+                "Perfectionist who obsesses over details",
+                "Jealous of others' success and happiness"
+            ],
+            "methods": [
+                "Physical Prowess", "Mental Acuity", "Social Manipulation", "Magical Power",
+                "Divine Connection", "Natural Harmony", "Technological Innovation", "Artistic Expression",
+                "Commercial Enterprise", "Political Influence", "Criminal Activity", "Academic Research"
+            ],
+            "goals": [
+                "Gain ultimate power over others", "Discover ancient lost knowledge", 
+                "Accumulate vast wealth and treasures", "Achieve immortality or eternal life",
+                "Master forbidden magic or techniques", "Revenge against those who wronged them",
+                "Protection of loved ones or community", "Restoration of lost honor or status",
+                "Discovery of true identity or heritage", "Redemption for past mistakes",
+                "Exploration of unknown territories", "Creation of lasting artistic legacy",
+                "Establishment of just and fair society", "Connection with divine or cosmic forces",
+                "Understanding the nature of reality", "Liberation from oppressive circumstances"
+            ]
+        };
+
+        const objectData = {
+            "objects": [
+                {
+                    "ID": "1.1.1",
+                    "Type": "Simple Melee Weapon",
+                    "Name": "Club",
+                    "GP": 0.1,
+                    "Damage": "1d4 Bludgeon",
+                    "Weight": "2 lb.",
+                    "Properties": "Light",
+                    "Rarity": "Common",
+                    "Utility": "Combat",
+                    "Common Material": "Oak",
+                    "Rare Material": "Iron",
+                    "GP Mult": 2.0,
+                    "Artifact": "No"
+                },
+                {
+                    "ID": "1.1.2",
+                    "Type": "Simple Melee Weapon",
+                    "Name": "Dagger",
+                    "GP": 2.0,
+                    "Damage": "1d4 Piercing",
+                    "Weight": "1 lb.",
+                    "Properties": "Finesse, Light, Thrown (20/60)",
+                    "Rarity": "Common",
+                    "Utility": "Combat",
+                    "Common Material": "Metal",
+                    "Rare Material": "Bone",
+                    "GP Mult": 2.0,
+                    "Artifact": "No"
+                },
+                {
+                    "ID": "2.1.1",
+                    "Type": "Light Armor",
+                    "Name": "Leather Armor",
+                    "GP": 10.0,
+                    "Damage": "11 + Dex modifier",
+                    "Weight": "10 lb.",
+                    "Properties": "Light armor",
+                    "Rarity": "Common",
+                    "Utility": "Defense",
+                    "Common Material": "Leather",
+                    "Rare Material": "Dragon Hide",
+                    "GP Mult": 10.0,
+                    "Artifact": "No"
+                },
+                {
+                    "ID": "3.1.1",
+                    "Type": "Adventuring Gear",
+                    "Name": "Backpack",
+                    "GP": 2.0,
+                    "Damage": "",
+                    "Weight": "5 lb.",
+                    "Properties": "Can hold 1 cubic foot/30 pounds",
+                    "Rarity": "Common",
+                    "Utility": "Storage",
+                    "Common Material": "Canvas",
+                    "Rare Material": "Silk",
+                    "GP Mult": 3.0,
+                    "Artifact": "No"
+                },
+                {
+                    "ID": "4.1.1",
+                    "Type": "Tools",
+                    "Name": "Thieves' Tools",
+                    "GP": 25.0,
+                    "Damage": "",
+                    "Weight": "1 lb.",
+                    "Properties": "Proficiency with these tools",
+                    "Rarity": "Uncommon",
+                    "Utility": "Utility",
+                    "Common Material": "Metal",
+                    "Rare Material": "Mithril",
+                    "GP Mult": 5.0,
+                    "Artifact": "No"
+                }
+            ],
+            "materials": [
+                "Oak", "Pine", "Mahogany", "Iron", "Steel", "Silver", "Gold", "Platinum",
+                "Leather", "Silk", "Cotton", "Wool", "Bone", "Ivory", "Crystal", "Obsidian",
+                "Mithril", "Adamantine", "Dragon Hide", "Unicorn Hair", "Phoenix Feather"
+            ],
+            "artifactProperties": [
+                {
+                    "Property Roll": 1,
+                    "Property Name": "Unerring Guidance",
+                    "Property Description": "Once per day, you can add +1d4 to an ability check",
+                    "Property Type": "Minor Beneficial"
+                },
+                {
+                    "Property Roll": 2,
+                    "Property Name": "Lightbearer",
+                    "Property Description": "Casts *light* at will",
+                    "Property Type": "Minor Beneficial"
+                },
+                {
+                    "Property Roll": 3,
+                    "Property Name": "Whispers of the Past",
+                    "Property Description": "Advantage on one History or Arcana check per day",
+                    "Property Type": "Minor Beneficial"
+                },
+                {
+                    "Property Roll": 4,
+                    "Property Name": "Enhanced Durability",
+                    "Property Description": "Item has resistance to all damage types",
+                    "Property Type": "Major Beneficial"
+                },
+                {
+                    "Property Roll": 5,
+                    "Property Name": "Cursed",
+                    "Property Description": "Item cannot be removed once attuned",
+                    "Property Type": "Minor Detrimental"
+                },
+                {
+                    "Property Roll": 6,
+                    "Property Name": "Malevolent Spirit",
+                    "Property Description": "Item whispers disturbing thoughts to the wielder",
+                    "Property Type": "Major Detrimental"
+                }
+            ]
+        };
+
+        // Name generation data
+        const nameData = {
+            "human": {
+                "male": ["Aerdyn", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Dayereth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel", "Lamlis", "Laucian", "Mindartis", "Naal", "Nutae", "Paelynn", "Peren", "Quarion", "Riardon", "Rolen", "Silvyr", "Suhnaal", "Thamior", "Theriatis", "Therivan", "Uthemar", "Vanuath", "Varis"],
+                "female": ["Adrie", "Ahvna", "Aramil", "Aranea", "Berris", "Caelynn", "Dayereth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel", "Lamlis", "Laucian", "Mindartis", "Naal", "Nutae", "Paelynn", "Peren", "Quarion", "Riardon", "Rolen", "Silvyr", "Suhnaal", "Thamior", "Theriatis", "Therivan", "Uthemar", "Vanuath", "Varis"]
+            },
+            "elf": {
+                "male": ["Aramil", "Aust", "Berrian", "Dayereth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Laucian", "Mindartis", "Naal", "Nutae", "Paelynn", "Peren", "Quarion", "Riardon", "Rolen", "Silvyr", "Suhnaal", "Thamior", "Theriatis", "Therivan", "Uthemar", "Vanuath", "Varis"],
+                "female": ["Adrie", "Ahvna", "Aramil", "Aranea", "Berris", "Caelynn", "Dayereth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel", "Lamlis", "Laucian", "Mindartis", "Naal", "Nutae", "Paelynn", "Peren", "Quarion", "Riardon", "Rolen", "Silvyr", "Suhnaal", "Thamior", "Theriatis", "Therivan", "Uthemar", "Vanuath", "Varis"]
+            },
+            "dwarf": {
+                "male": ["Adrik", "Alberich", "Baern", "Darrak", "Delg", "Eberk", "Einkil", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak", "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik", "Taklinn", "Thoradin", "Thorek", "Tordek", "Traubon", "Travok", "Ulfgar", "Veit", "Vondal"],
+                "female": ["Amber", "Bardryn", "Diesa", "Eldeth", "Gunnloda", "Guri", "Helja", "Hlin", "Kathra", "Kristryd", "Ilde", "Liftrasa", "Mardred", "Riswynn", "Sannl", "Torbera", "Torgga", "Vistra"]
+            }
+        };
+
+        // CR Weighting System
+        const crWeights = [
+            { range: [20, Infinity], weight: 0.01 },
+            { range: [18, 19], weight: 0.02 },
+            { range: [16, 17], weight: 0.04 },
+            { range: [12, 15], weight: 0.08 },
+            { range: [9, 11], weight: 0.16 },
+            { range: [5, 8], weight: 0.32 },
+            { range: [0, 4], weight: 0.37 }
+        ];
+
+        // Utility Functions
+        function resolveRange(value) {
+            if (typeof value === 'string' && value.includes(',')) {
+                const cleanValue = value.replace(/[()]/g, '');
+                const [min, max] = cleanValue.split(',').map(Number);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            return parseInt(value) || 0;
+        }
+
+        function rollDice(sides, count = 1) {
+            let total = 0;
+            for (let i = 0; i < count; i++) {
+                total += Math.floor(Math.random() * sides) + 1;
+            }
+            return total;
+        }
+
+        function randomChoice(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function weightedChoice(items, weights) {
+            const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+            let randomNum = Math.random() * totalWeight;
+            
+            for (let i = 0; i < items.length; i++) {
+                randomNum -= weights[i];
+                if (randomNum <= 0) {
+                    return items[i];
+                }
+            }
+            return items[items.length - 1];
+        }
+
+        function getCRWeight(cr) {
+            for (const weight of crWeights) {
+                if (cr >= weight.range[0] && cr <= weight.range[1]) {
+                    return weight.weight;
+                }
+            }
+            return 0.01;
+        }
+
+        function generateName(species, gender = null) {
+            const speciesLower = species.toLowerCase();
+            let nameList = [];
+
+            if (nameData[speciesLower]) {
+                if (gender && nameData[speciesLower][gender]) {
+                    nameList = nameData[speciesLower][gender];
+                } else {
+                    // Combine male and female names if gender not specified
+                    nameList = [
+                        ...(nameData[speciesLower].male || []),
+                        ...(nameData[speciesLower].female || [])
+                    ];
+                }
+            }
+
+            if (nameList.length === 0) {
+                // Fallback to human names
+                nameList = [...nameData.human.male, ...nameData.human.female];
+            }
+
+            return randomChoice(nameList);
+        }
+
+        // Generation Functions
+        function generateFlora() {
+            const floraEntities = entityData.filter(entity => entity["Encounter Type"] === "FLORA");
+            if (floraEntities.length === 0) return null;
+
+            // Apply CR weighting
+            const weights = floraEntities.map(entity => getCRWeight(entity.CR));
+            const selectedEntity = weightedChoice(floraEntities, weights);
+
+            return {
+                ...selectedEntity,
+                HP: resolveRange(selectedEntity.HP),
+                DPR: resolveRange(selectedEntity.DPR),
+                Name: generateName("plant")
+            };
+        }
+
+        function generateFauna() {
+            const faunaEntities = entityData.filter(entity => entity["Encounter Type"] === "FAUNA");
+            if (faunaEntities.length === 0) return null;
+
+            // Apply CR weighting
+            const weights = faunaEntities.map(entity => getCRWeight(entity.CR));
+            const selectedEntity = weightedChoice(faunaEntities, weights);
+
+            return {
+                ...selectedEntity,
+                HP: resolveRange(selectedEntity.HP),
+                DPR: resolveRange(selectedEntity.DPR),
+                Name: generateName("beast")
+            };
+        }
+
+        function generateHumanoid() {
+            // Select species
+            const species = randomChoice(humanoidData.humanoids);
+            
+            // Determine NPC type (75% Commoner, 20% Noble, 5% Expert)
+            const typeRoll = Math.random();
+            let npcType;
+            if (typeRoll < 0.75) {
+                npcType = "Commoner";
+            } else if (typeRoll < 0.95) {
+                npcType = "Noble";
+            } else {
+                npcType = "Expert";
+            }
+
+            // Generate ability scores based on NPC type
+            const abilities = generateAbilityScores(npcType);
+            
+            // Assign class
+            const characterClass = npcType === "Commoner" ? "Commoner" : randomChoice(humanoidData.classes.slice(3)); // Skip Commoner, Noble, Expert for adventurers
+            
+            // Generate flaw (using simplified 3d6 system)
+            const flawIndex = (rollDice(6) + rollDice(6) + rollDice(6) - 3) % humanoidData.flaws.length;
+            const flaw = humanoidData.flaws[flawIndex];
+            
+            // Determine method based on ability extremes
+            const method = determineMethod(abilities);
+            
+            // Select goal based on method
+            const goal = randomChoice(humanoidData.goals);
+            
+            // Generate name
+            const gender = Math.random() < 0.5 ? 'male' : 'female';
+            const name = generateName(species.split('-')[0], gender);
+
+            return {
+                "Encounter Type": "HUMANOID",
+                Species: species,
+                Name: name,
+                Gender: gender,
+                Type: npcType,
+                Class: characterClass,
+                Abilities: abilities,
+                Flaw: flaw,
+                Method: method,
+                Goal: goal,
+                Size: "Medium",
+                "Creature Type": "Humanoid",
+                Alignment: generateAlignment(),
+                XP: getXPForType(npcType),
+                CR: getCRForType(npcType),
+                Prof: 2.0,
+                AC: 10 + abilities.Dexterity,
+                HP: generateHumanoidHP(npcType),
+                ATK: 2 + abilities.Strength,
+                DPR: generateHumanoidDPR(npcType),
+                DC: 8 + abilities.Charisma
+            };
+        }
+
+        function generateAbilityScores(npcType) {
+            const baseScores = {
+                Strength: 10,
+                Dexterity: 10,
+                Constitution: 10,
+                Intelligence: 10,
+                Wisdom: 10,
+                Charisma: 10
+            };
+
+            // Modify based on NPC type
+            if (npcType === "Noble") {
+                baseScores.Charisma += 2;
+                baseScores.Intelligence += 1;
+            } else if (npcType === "Expert") {
+                baseScores.Intelligence += 2;
+                baseScores.Wisdom += 1;
+            }
+
+            // Add random variation
+            Object.keys(baseScores).forEach(ability => {
+                baseScores[ability] += rollDice(6) - 3; // -2 to +3 variation
+                baseScores[ability] = Math.max(3, Math.min(18, baseScores[ability])); // Clamp between 3-18
+            });
+
+            return baseScores;
+        }
+
+        function determineMethod(abilities) {
+            const abilityValues = Object.values(abilities);
+            const maxValue = Math.max(...abilityValues);
+            const minValue = Math.min(...abilityValues);
+            
+            // Find which ability is highest
+            const maxAbility = Object.keys(abilities).find(key => abilities[key] === maxValue);
+            
+            const methodMap = {
+                Strength: "Physical Prowess",
+                Dexterity: "Physical Prowess", 
+                Constitution: "Physical Prowess",
+                Intelligence: "Mental Acuity",
+                Wisdom: "Divine Connection",
+                Charisma: "Social Manipulation"
+            };
+
+            return methodMap[maxAbility] || randomChoice(humanoidData.methods);
+        }
+
+        function generateAlignment() {
+            const alignments = [
+                "Lawful Good", "Neutral Good", "Chaotic Good",
+                "Lawful Neutral", "True Neutral", "Chaotic Neutral",
+                "Lawful Evil", "Neutral Evil", "Chaotic Evil"
+            ];
+            return randomChoice(alignments);
+        }
+
+        function getXPForType(type) {
+            const xpMap = { "Commoner": 25, "Noble": 100, "Expert": 200 };
+            return xpMap[type] || 25;
+        }
+
+        function getCRForType(type) {
+            const crMap = { "Commoner": 0.125, "Noble": 0.5, "Expert": 1 };
+            return crMap[type] || 0.125;
+        }
+
+        function generateHumanoidHP(type) {
+            const hpMap = { "Commoner": "4d6", "Noble": "6d8", "Expert": "8d8" };
+            const dice = hpMap[type] || "4d6";
+            const [count, sides] = dice.split('d').map(Number);
+            return rollDice(sides, count);
+        }
+
+        function generateHumanoidDPR(type) {
+            const dprMap = { "Commoner": 3, "Noble": 6, "Expert": 8 };
+            return dprMap[type] || 3;
+        }
+
+        function generateObject(quantity = 1) {
+            const results = [];
+            
+            for (let i = 0; i < quantity; i++) {
+                const obj = randomChoice(objectData.objects);
+                
+                // Determine material (90% common, 10% rare)
+                const isRareMaterial = Math.random() < 0.1;
+                const material = isRareMaterial ? obj["Rare Material"] : obj["Common Material"];
+                
+                // Calculate total GP
+                const baseGP = obj.GP;
+                const multiplier = isRareMaterial ? obj["GP Mult"] : 1;
+                const totalGP = (baseGP * multiplier).toFixed(2);
+                
+                // Check if it's an artifact
+                const isArtifact = obj.Artifact === "Yes" || Math.random() < 0.01; // 1% chance for artifact
+                
+                let artifactProperties = [];
+                if (isArtifact) {
+                    // Generate artifact properties
+                    const minorBeneficial = rollDice(4);
+                    const majorBeneficial = 2;
+                    const minorDetrimental = rollDice(4);
+                    const majorDetrimental = 2;
+                    
+                    for (let j = 0; j < minorBeneficial; j++) {
+                        const prop = objectData.artifactProperties.find(p => p["Property Type"] === "Minor Beneficial");
+                        if (prop) artifactProperties.push(prop);
+                    }
+                    for (let j = 0; j < majorBeneficial; j++) {
+                        const prop = objectData.artifactProperties.find(p => p["Property Type"] === "Major Beneficial");
+                        if (prop) artifactProperties.push(prop);
+                    }
+                    for (let j = 0; j < minorDetrimental; j++) {
+                        const prop = objectData.artifactProperties.find(p => p["Property Type"] === "Minor Detrimental");
+                        if (prop) artifactProperties.push(prop);
+                    }
+                    for (let j = 0; j < majorDetrimental; j++) {
+                        const prop = objectData.artifactProperties.find(p => p["Property Type"] === "Major Detrimental");
+                        if (prop) artifactProperties.push(prop);
+                    }
+                }
+                
+                results.push({
+                    ...obj,
+                    Material: material,
+                    "Total GP": totalGP,
+                    "Is Artifact": isArtifact,
+                    "Artifact Properties": artifactProperties
+                });
+            }
+            
+            return results;
+        }
+
+        function generateRandom() {
+            const randomEntity = randomChoice(entityData);
+            return {
+                ...randomEntity,
+                HP: resolveRange(randomEntity.HP),
+                DPR: resolveRange(randomEntity.DPR),
+                Name: generateName(randomEntity.Species)
+            };
+        }
+
+        function generateBiomeEntity() {
+            const selectedBiome = document.getElementById('biomeSelect').value;
+            let filteredEntities = entityData;
+            
+            if (selectedBiome) {
+                filteredEntities = entityData.filter(entity => entity.Biome === selectedBiome);
+            }
+            
+            if (filteredEntities.length === 0) {
+                displayError("No entities found for the selected biome.");
+                return;
+            }
+            
+            // Apply CR weighting
+            const weights = filteredEntities.map(entity => getCRWeight(entity.CR));
+            const selectedEntity = weightedChoice(filteredEntities, weights);
+            
+            const result = {
+                ...selectedEntity,
+                HP: resolveRange(selectedEntity.HP),
+                DPR: resolveRange(selectedEntity.DPR),
+                Name: generateName(selectedEntity.Species)
+            };
+            
+            displayResults([result], `Biome Entity${selectedBiome ? ` (${selectedBiome})` : ''}`);
+        }
+
+        // UI Functions
+        function toggleBiomeControls() {
+            const controls = document.getElementById('biomeControls');
+            controls.classList.toggle('active');
+        }
+
+        function showLoading() {
+            document.getElementById('placeholder').style.display = 'none';
+            document.getElementById('resultsContent').style.display = 'none';
+            document.getElementById('loading').classList.add('active');
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').classList.remove('active');
+        }
+
+        function displayError(message) {
+            hideLoading();
+            const resultsContent = document.getElementById('resultsContent');
+            resultsContent.innerHTML = `
+                <div class="entity" style="border-left-color: #e74c3c;">
+                    <h3 style="color: #e74c3c;">Error</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+            resultsContent.style.display = 'block';
+        }
+
+        function displayResults(entities, title = "Generated Entity") {
+            hideLoading();
+            
+            const resultsContent = document.getElementById('resultsContent');
+            const timestamp = new Date().toLocaleString();
+            
+            let html = `
+                <div class="results-header">
+                    <h2>${title}</h2>
+                    <div class="timestamp">Generated on ${timestamp}</div>
+                </div>
+            `;
+            
+            entities.forEach((entity, index) => {
+                if (entity.Type === "Object" || entity.ID) {
+                    // Object display
+                    html += generateObjectHTML(entity);
+                } else {
+                    // Entity display
+                    html += generateEntityHTML(entity);
+                }
+            });
+            
+            resultsContent.innerHTML = html;
+            resultsContent.style.display = 'block';
+        }
+
+        function generateEntityHTML(entity) {
+            const encounterType = entity["Encounter Type"] || "UNKNOWN";
+            
+            return `
+                <div class="entity">
+                    <h3>${entity.Name || entity.Species} (${encounterType})</h3>
+                    <div class="entity-stats">
+                        <div class="stat-group">
+                            <h4>Basic Info</h4>
+                            <ul class="stat-list">
+                                <li><strong>Species:</strong> ${entity.Species}</li>
+                                <li><strong>Size:</strong> ${entity.Size}</li>
+                                <li><strong>Type:</strong> ${entity["Creature Type"]}</li>
+                                <li><strong>Alignment:</strong> ${entity.Alignment}</li>
+                                ${entity.Biome ? `<li><strong>Biome:</strong> ${entity.Biome}</li>` : ''}
+                            </ul>
+                        </div>
+                        
+                        <div class="stat-group">
+                            <h4>Combat Stats</h4>
+                            <ul class="stat-list">
+                                <li><strong>CR:</strong> ${entity.CR}</li>
+                                <li><strong>XP:</strong> ${entity.XP}</li>
+                                <li><strong>AC:</strong> ${entity.AC}</li>
+                                <li><strong>HP:</strong> ${entity.HP}</li>
+                                <li><strong>Attack:</strong> +${entity.ATK}</li>
+                                <li><strong>DPR:</strong> ${entity.DPR}</li>
+                                <li><strong>Save DC:</strong> ${entity.DC}</li>
+                            </ul>
+                        </div>
+                        
+                        ${generateHumanoidStatsHTML(entity)}
+                    </div>
+                </div>
+            `;
+        }
+
+        function generateHumanoidStatsHTML(entity) {
+            if (entity["Encounter Type"] !== "HUMANOID" || !entity.Abilities) {
+                return '';
+            }
+            
+            return `
+                <div class="stat-group">
+                    <h4>Character Details</h4>
+                    <ul class="stat-list">
+                        <li><strong>Gender:</strong> ${entity.Gender}</li>
+                        <li><strong>Type:</strong> ${entity.Type}</li>
+                        <li><strong>Class:</strong> ${entity.Class}</li>
+                    </ul>
+                </div>
+                
+                <div class="stat-group">
+                    <h4>Ability Scores</h4>
+                    <ul class="stat-list">
+                        <li><strong>STR:</strong> ${entity.Abilities.Strength}</li>
+                        <li><strong>DEX:</strong> ${entity.Abilities.Dexterity}</li>
+                        <li><strong>CON:</strong> ${entity.Abilities.Constitution}</li>
+                        <li><strong>INT:</strong> ${entity.Abilities.Intelligence}</li>
+                        <li><strong>WIS:</strong> ${entity.Abilities.Wisdom}</li>
+                        <li><strong>CHA:</strong> ${entity.Abilities.Charisma}</li>
+                    </ul>
+                </div>
+                
+                <div class="stat-group">
+                    <h4>Personality</h4>
+                    <ul class="stat-list">
+                        <li><strong>Flaw:</strong> ${entity.Flaw}</li>
+                        <li><strong>Method:</strong> ${entity.Method}</li>
+                        <li><strong>Goal:</strong> ${entity.Goal}</li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        function generateObjectHTML(obj) {
+            return `
+                <div class="entity">
+                    <h3>${obj.Name} ${obj["Is Artifact"] ? "(Artifact)" : ""}</h3>
+                    <div class="entity-stats">
+                        <div class="stat-group">
+                            <h4>Item Details</h4>
+                            <ul class="stat-list">
+                                <li><strong>Type:</strong> ${obj.Type}</li>
+                                <li><strong>Material:</strong> ${obj.Material}</li>
+                                <li><strong>Rarity:</strong> ${obj.Rarity}</li>
+                                <li><strong>Weight:</strong> ${obj.Weight}</li>
+                                <li><strong>Value:</strong> ${obj["Total GP"]} gp</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="stat-group">
+                            <h4>Properties</h4>
+                            <ul class="stat-list">
+                                ${obj.Damage ? `<li><strong>Damage:</strong> ${obj.Damage}</li>` : ''}
+                                ${obj.Properties ? `<li><strong>Properties:</strong> ${obj.Properties}</li>` : ''}
+                                <li><strong>Utility:</strong> ${obj.Utility}</li>
+                            </ul>
+                        </div>
+                        
+                        ${obj["Is Artifact"] && obj["Artifact Properties"] ? generateArtifactPropertiesHTML(obj["Artifact Properties"]) : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function generateArtifactPropertiesHTML(properties) {
+            if (!properties || properties.length === 0) return '';
+            
+            return `
+                <div class="stat-group" style="grid-column: 1 / -1;">
+                    <h4>Artifact Properties</h4>
+                    <ul class="stat-list">
+                        ${properties.map(prop => `
+                            <li><strong>${prop["Property Name"]} (${prop["Property Type"]}):</strong> ${prop["Property Description"]}</li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        // Main Generation Function
+        function generateEntity(mode) {
+            showLoading();
+            
+            // Hide biome controls for non-biome modes
+            if (mode !== 'biome') {
+                document.getElementById('biomeControls').classList.remove('active');
+            }
+            
+            setTimeout(() => {
+                try {
+                    let results = [];
+                    let title = "";
+                    
+                    switch (mode) {
+                        case 'flora':
+                            const flora = generateFlora();
+                            if (flora) {
+                                results = [flora];
+                                title = "Generated Flora";
+                            }
+                            break;
+                            
+                        case 'fauna':
+                            const fauna = generateFauna();
+                            if (fauna) {
+                                results = [fauna];
+                                title = "Generated Fauna";
+                            }
+                            break;
+                            
+                        case 'humanoid':
+                            const humanoid = generateHumanoid();
+                            if (humanoid) {
+                                results = [humanoid];
+                                title = "Generated Humanoid";
+                            }
+                            break;
+                            
+                        case 'random':
+                            const random = generateRandom();
+                            if (random) {
+                                results = [random];
+                                title = "Generated Random Entity";
+                            }
+                            break;
+                            
+                        case 'object':
+                            const quantity = parseInt(document.getElementById('objectQuantity').value) || 1;
+                            const objects = generateObject(quantity);
+                            if (objects && objects.length > 0) {
+                                results = objects.map(obj => ({...obj, Type: "Object"}));
+                                title = `Generated Object${quantity > 1 ? 's' : ''}`;
+                            }
+                            break;
+                            
+                        default:
+                            throw new Error(`Unknown generation mode: ${mode}`);
+                    }
+                    
+                    if (results.length === 0) {
+                        displayError(`No entities available for ${mode} generation.`);
+                    } else {
+                        displayResults(results, title);
+                    }
+                } catch (error) {
+                    console.error('Generation error:', error);
+                    displayError(`Error generating ${mode}: ${error.message}`);
+                }
+            }, 500); // Small delay for better UX
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Entity Generator loaded successfully!');
+            console.log(`Loaded ${entityData.length} entities`);
+            console.log(`Loaded ${objectData.objects.length} objects`);
+            console.log(`Loaded ${humanoidData.humanoids.length} humanoid species`);
+        });
+    </script>
+</body>
+</html>
