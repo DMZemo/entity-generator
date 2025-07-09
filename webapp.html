@@ -376,21 +376,22 @@
             <!-- Biome Selection -->
             <div class="biome-controls" id="biomeControls">
                 <label for="biomeSelect">Select Biome:</label>
-                <option value="">All Biomes</option>
-                <option value="ATMOSPHERE">Atmosphere</option>
-                <option value="MARINE">Marine</option>
-                <option value="GLACIER">Glacier</option>
-                <option value="TUNDRA">Tundra</option>
-                <option value="TAIGA">Taiga</option>
-                <option value="COLD_DESERT">Cold Desert</option>
-                <option value="HOT_DESERT">Hot Desert</option>
-                <option value="TROPICAL_RAINFOREST">Tropical Rainforest</option>
-                <option value="WETLAND">Wetland</option>
-                <option value="TROPICAL_SEASONAL_FOREST">Tropical Seasonal Forest</option>
-                <option value="SAVANNA">Savanna</option>
-                <option value="GRASSLAND">Grassland</option>
-                <option value="TEMPERATE_DECIDUOUS_FOREST">Temperate Deciduous Forest</option>
-                <option value="TEMPERATE_RAINFOREST">Temperate Rainforest</option>
+                <select id="biomeSelect" name="biomeSelect">
+                    <option value="">All Biomes</option>
+                    <option value="ATMOSPHERE">Atmosphere</option>
+                    <option value="MARINE">Marine</option>
+                    <option value="GLACIER">Glacier</option>
+                    <option value="TUNDRA">Tundra</option>
+                    <option value="TAIGA">Taiga</option>
+                    <option value="COLD_DESERT">Cold Desert</option>
+                    <option value="HOT_DESERT">Hot Desert</option>
+                    <option value="TROPICAL_RAINFOREST">Tropical Rainforest</option>
+                    <option value="WETLAND">Wetland</option>
+                    <option value="TROPICAL_SEASONAL_FOREST">Tropical Seasonal Forest</option>
+                    <option value="SAVANNA">Savanna</option>
+                    <option value="GRASSLAND">Grassland</option>
+                    <option value="TEMPERATE_DECIDUOUS_FOREST">Temperate Deciduous Forest</option>
+                    <option value="TEMPERATE_RAINFOREST">Temperate Rainforest</option>
                 </select>
                 <button class="mode-btn" onclick="generateBiomeEntity()" style="width: auto; min-height: auto; padding: 8px 20px;">
                     Generate
