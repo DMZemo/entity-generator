@@ -1,3 +1,5 @@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62033,24 +62035,23 @@
         }
 
         function generateName(species, gender = null) {
-            const speciesLower = species.toLowerCase();
             let nameList = [];
 
-            if (nameData[speciesLower]) {
-                if (gender && nameData[speciesLower][gender]) {
-                    nameList = nameData[speciesLower][gender];
+            if (nameData[species]) {
+                if (gender && nameData[species][gender]) {
+                    nameList = nameData[species][gender];
                 } else {
                     // Combine male and female names if gender not specified
                     nameList = [
-                        ...(nameData[speciesLower].male || []),
-                        ...(nameData[speciesLower].female || [])
+                        ...(nameData[species].male || []),
+                        ...(nameData[species].female || [])
                     ];
                 }
             }
 
             if (nameList.length === 0) {
-                // Fallback to human names
-                nameList = [...nameData.human.male, ...nameData.human.female];
+                // Fallback to human names (using "Human-Basic" as the fallback)
+                nameList = [...nameData["Human-Basic"].male, ...nameData["Human-Basic"].female];
             }
 
             return randomChoice(nameList);
