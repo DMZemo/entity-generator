@@ -1,5 +1,3 @@
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -54914,22 +54912,22 @@
 
         const humanoidData = {
             "humanoids": [
-                "Human-Basic", "Elf-High", "Elf-Wood", "Elf-Dark", "Dwarf-Hill", "Dwarf-Mountain", 
-                "Halfling-Lightfoot", "Halfling-Stout", "Dragonborn", "Gnome-Forest", "Gnome-Rock", 
-                "Half-Elf", "Half-Orc", "Tiefling", "Aasimar", "Genasi-Air", "Genasi-Earth", 
-                "Genasi-Fire", "Genasi-Water", "Goliath", "Tabaxi", "Triton", "Firbolg", 
-                "Kenku", "Lizardfolk", "Tortle", "Bugbear", "Goblin", "Hobgoblin", "Kobold", 
-                "Orc", "Yuan-ti", "Aarakocra", "Githyanki", "Githzerai", "Deep Gnome", 
-                "Duergar", "Sea Elf", "Shadar-kai", "Eladrin", "Variant Human", "Custom Lineage",
-                "Fairy", "Harengon", "Owlfolk", "Centaur", "Minotaur", "Satyr", "Changeling",
-                "Kalashtar", "Shifter", "Warforged", "Vedalken", "Simic Hybrid", "Loxodon",
-                "Gith", "Githzerai", "Plasmoid", "Thri-kreen", "Hadozee", "Astral Elf",
-                "Autognome", "Giff", "Hippo", "Leonin", "Locathah"
+                "Duergar", "Dwarf-Hill", "Dwarf-Mountain", "Derro", "Dwarf-Magma", "Dwarf-Fire",
+                "Fairy", "Satyr", "Changeling", "Shadar-kai", "Drow",
+                "Elf-High", "Elf-Wood", "Elf-Sea", "Elf-High_Half", "Elf-Wood_Half", "Elf-Sea_Half",
+                "Deep Gnome", "Forest Gnome", "Rock Gnome", "Stout Halfling",
+                "Lightfoot Halfling", "Travelling Halfling",
+                "Human-Basic", "Human-Air", "Human-Water", "Human-Fire", "Human-Earth", "Human-Variant",
+                "Lizardfolk", "Kobold", "Tortle", "Triton","Yuan-ti",
+                "Dragonborn Black", "Dragonborn Blue", "Dragonborn Green", "Dragonborn Red", "Dragonborn White", "Dragonborn Brass", "Dragonborn Bronze", "Dragonborn Copper", "Dragonborn Gold", "Dragonborn Silver",
+                "Harengon", "Minotaur", "Centaur", "Tabaxi", "Aarakocra", "Kenku",
+                "Ogre", "Orc/Half-Orc", "Firbolg", "Goliath", "Bugbear", "Goblin", "Hobgoblin",
+                "Aasimar", "Tiefling", "Air Genasi", "Earth Genasi", "Fire Genasi", "Water Genasi"
             ],
             "classes": [
                 "Commoner", "Noble", "Expert", "Barbarian", "Bard", "Cleric", "Druid", 
                 "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", 
-                "Wizard", "Artificer", "Blood Hunter"
+                "Wizard", "Artificer"
             ],
             "flaws": ["Greed", "Envy", "Pride", "Wrath", "Sloth", "Lust", "Fear", "Anxiety", "Depression", "Anger", "Insecurity", "Guilt", "Impulsiveness", "Procrastination", "Addiction", "Lying", "Self-Sabotage", "Obsessiveness", "Paranoia", "Hallucinations", "Delusions of Grandeur", "Phobias", "Mania", "Amnesia", "Dissociation", "Crisis of Faith", "Conflicted Loyalties", "Masked Personality", "Repressed Memories", "Split Allegiances", "Codependency", "Need for Validation", "Fear of Abandonment", "Helplessness", "Martyr Complex", "Obedience to Authority", "Blindness", "Deafness", "Paralysis", "Amputation", "Chronic Pain", "Muteness", "Low Stamina", "Poor Reflexes", "Frailty", "Sickliness", "Chronic Fatigue", "Clumsiness", "Severe Burns", "Facial Scars", "Hunchback", "Missing Eye", "Maimed Hand", "Discolored Skin", "Arthritis", "Memory Loss", "Diminished Senses", "Brittle Bones", "Tremors", "Slowed Movement", "Night Blindness", "Color Blindness", "Tinnitus", "Partial Deafness", "No Sense of Smell", "Pain Insensitivity", "Emaciated", "Obese", "Unkempt", "Malnourished", "Unusually tall or short", "Visibly Ill", "Shyness", "Arrogance", "Rudeness", "Overconfidence", "Passive Aggression", "Abrasiveness", "Suspicious Nature", "Betrayal Trauma", "Secretive", "Manipulative", "Overprotective", "Quick to Accuse", "Mumbles", "Interrupts Others", "Talks Too Much", "Can't Keep Secrets", "Poor Listener", "Cryptic Speech", "Xenophobic", "Elitist", "Superstitious", "Insensitive to Customs", "Language Barrier", "Prejudiced", "Infamous Past", "Known Criminal", "Liar by Reputation", "Social Pariah", "Traitor", "Debt-Ridden", "Cold-Blooded", "Apathetic", "Exploitative", "Emotionally Distant", "Disregards Consequences", "Unapologetic", "Elemental Vulnerability", "Susceptibility to Enchantment", "Poor Magic Resistance", "Magic Allergy", "Cannot Use Magic", "Drains Own Health", "Uncontrolled Casting", "Random Surges", "Cursed Casting", "Magic Fatigue", "Magic Backlash", "Spell Echo", "Haunted by a Spirit", "Bound to an Object", "Aging Curse", "Body Transmutation Curse", "Vow of Silence", "Mind-Controlled", "Mad Arcana", "Divine Blasphemy", "Eldritch Truths", "Taboo Ritual Use", "Memory Plague", "Mark of a Dead God", "Spell High", "Reliant on Mana Potions", "Overuse of Divination", "Needs to Cast Daily", "Drawn to Magical Sites", "Craves Forbidden Magic", "Can Only Cast at Night", "Loses Magic When Afraid", "Only Knows Verbal Components", "Cannot Target Self", "Limited Spell Memory", "Must Speak Ancient Language", "Zealot for a God", "Devoted to a Cult", "Obsession with Honor", "Revolutionary Extremist", "Death Before Dishonor", "Believes in Prophecy", "Racist", "Sexist", "Classist", "Speciesist", "Anti-Magic", "Religious Bigot", "No Middle Ground", "End-Justifies-Means Mentality", "Burn It All Down Attitude", "Constant Need for War", "Anti-Authority Rebel", "Rigid Lawful Obedience", "Blind Trust in Others", "Believes in Obvious Lies", "Easily Convinced", "Cannot See Evil", "Believes in Universal Good", "Thinks All Problems Are Simple", "Nothing Matters", "Believes World Is a Joke", "Life Is Suffering", "No Hope", "Despises Joy", "Would Destroy the World", "Pacifist with a Sword", "Atheist Cleric", "Follower of Two Enemy Gods", "Merciful Assassin", "Loyal Betrayer", "Ends Justify Means but Never Acts", "Estranged Parent", "Overbearing Sibling", "Vengeful Child", "Abusive Spouse", "Inherited Feud", "Heir to a Curse", "Unrequited Love", "Past Betrayal", "Love for Enemy", "Clingy Partner", "Serial Flirter", "Secret Affair", "Betrayed by a Friend", "Old Friend Now Rival", "Loyalty Conflict", "Ghosted", "Jealous of Ally", "Used as Pawn", "Poor Delegation", "Power Hungry", "Micromanager", "Blames Subordinates", "Doesn't Listen", "Cowardly Commander", "Hero Worship", "Won't Say No", "Gets Too Attached", "Seeks Approval", "Blind Loyalty", "Jealous of Leader", "Always the Outsider", "Oversteps Bounds", "Undermines Others", "Tries to Take Over", "Never Shares Credit", "Sabotages Group"],
             "bonds": [
@@ -61663,19 +61661,321 @@
 
         // Name generation data
         const nameData = {
-            "human": {
-                "male": ["Aerdyn", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Dayereth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel", "Lamlis", "Laucian", "Mindartis", "Naal", "Nutae", "Paelynn", "Peren", "Quarion", "Riardon", "Rolen", "Silvyr", "Suhnaal", "Thamior", "Theriatis", "Therivan", "Uthemar", "Vanuath", "Varis"],
-                "female": ["Adrie", "Ahvna", "Aramil", "Aranea", "Berris", "Caelynn", "Dayereth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel", "Lamlis", "Laucian", "Mindartis", "Naal", "Nutae", "Paelynn", "Peren", "Quarion", "Riardon", "Rolen", "Silvyr", "Suhnaal", "Thamior", "Theriatis", "Therivan", "Uthemar", "Vanuath", "Varis"]
-            },
-            "elf": {
-                "male": ["Aramil", "Aust", "Berrian", "Dayereth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Laucian", "Mindartis", "Naal", "Nutae", "Paelynn", "Peren", "Quarion", "Riardon", "Rolen", "Silvyr", "Suhnaal", "Thamior", "Theriatis", "Therivan", "Uthemar", "Vanuath", "Varis"],
-                "female": ["Adrie", "Ahvna", "Aramil", "Aranea", "Berris", "Caelynn", "Dayereth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel", "Lamlis", "Laucian", "Mindartis", "Naal", "Nutae", "Paelynn", "Peren", "Quarion", "Riardon", "Rolen", "Silvyr", "Suhnaal", "Thamior", "Theriatis", "Therivan", "Uthemar", "Vanuath", "Varis"]
-            },
-            "dwarf": {
-                "male": ["Adrik", "Alberich", "Baern", "Darrak", "Delg", "Eberk", "Einkil", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak", "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik", "Taklinn", "Thoradin", "Thorek", "Tordek", "Traubon", "Travok", "Ulfgar", "Veit", "Vondal"],
-                "female": ["Amber", "Bardryn", "Diesa", "Eldeth", "Gunnloda", "Guri", "Helja", "Hlin", "Kathra", "Kristryd", "Ilde", "Liftrasa", "Mardred", "Riswynn", "Sannl", "Torbera", "Torgga", "Vistra"]
-            }
-        };
+    "Duergar": {
+        "male": ["Aldrek", "Brom", "Durnan", "Eldrin", "Faldor", "Grom", "Haldor", "Ildrin", "Jarn", "Kaldur", "Lundar", "Mordrin", "Naldor", "Orin", "Paldur"],
+        "female": ["Bera", "Dagna", "Elda", "Fira", "Gilda", "Hilda", "Ilda", "Jora", "Kira", "Lira", "Mira", "Nira", "Orla", "Pira"] 
+    },
+
+    "Dwarf-Hill": {
+        "male": ["Adrik", "Alberich", "Baern", "Darrak", "Delg", "Eberk", "Einkil", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak", "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik", "Taklinn", "Thoradin", "Thorek", "Tordek", "Traubon", "Travok", "Ulfgar", "Veit", "Vondal"],
+        "female": ["Amber", "Bardryn", "Diesa", "Eldeth", "Gunnloda", "Guri", "Helja", "Hlin", "Kathra", "Kristryd", "Ilde", "Liftrasa", "Mardred", "Riswynn", "Sannl", "Torbera", "Torgga", "Vistra"] 
+    },
+
+    "Dwarf-Mountain": {
+        "male": ["Adrik", "Alberich", "Baern", "Darrak", "Delg", "Eberk", "Einkil", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak", "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik", "Taklinn", "Thoradin", "Thorek", "Tordek", "Traubon", "Travok", "Ulfgar", "Veit", "Vondal"],
+        "female": ["Amber", "Bardryn", "Diesa", "Eldeth", "Gunnloda", "Guri", "Helja", "Hlin", "Kathra", "Kristryd", "Ilde", "Liftrasa", "Mardred", "Riswynn", "Sannl", "Torbera", "Torgga", "Vistra"]
+    }, 
+
+    "Derro": {
+        "male": ["Aldrek", "Brom", "Durnan", "Eldrin", "Faldor", "Grom", "Haldor", "Ildrin", "Jarn", "Kaldur", "Lundar", "Mordrin", "Naldor", "Orin", "Paldur"],
+        "female": ["Bera", "Dagna", "Elda", "Fira", "Gilda", "Hilda", "Ilda", "Jora", "Kira", "Lira", "Mira", "Nira", "Orla", "Pira"]
+    },
+
+    "Dwarf-Magma": {
+        "male": ["Adrik", "Alberich", "Baern", "Darrak", "Delg", "Eberk", "Einkil", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak", "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik", "Taklinn", "Thoradin", "Thorek", "Tordek", "Traubon", "Travok", "Ulfgar", "Veit", "Vondal"],
+        "female": ["Amber", "Bardryn", "Diesa", "Eldeth", "Gunnloda", "Guri", "Helja", "Hlin", "Kathra", "Kristryd", "Ilde", "Liftrasa", "Mardred", "Riswynn", "Sannl", "Torbera", "Torgga", "Vistra"]
+    }, 
+
+    "Dwarf-Fire": {
+        "male": ["Adrik", "Alberich", "Baern", "Darrak", "Delg", "Eberk", "Einkil", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak", "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik", "Taklinn", "Thoradin", "Thorek", "Tordek", "Traubon", "Travok", "Ulfgar", "Veit", "Vondal"], 
+        "female": ["Amber", "Bardryn", "Diesa", "Eldeth", "Gunnloda", "Guri", "Helja", "Hlin", "Kathra", "Kristryd", "Ilde", "Liftrasa", "Mardred", "Riswynn", "Sannl", "Torbera", "Torgga", "Vistra"]  
+    },
+
+    "Fairy": {
+        "male": ["Bramble", "Dewdrop", "Flicker", "Gossamer", "Petal", "Shimmer", "Sparkle", "Thistle", "Willow", "Zephyr", "Acorn", "Blossom", "Cricket", "Fern", "Moss"],
+        "female": ["Aurora", "Blossom", "Clover", "Dahlia", "Ember", "Flora", "Glimmer", "Hazel", "Iris", "Jasmine", "Luna", "Meadow", "Nixie", "Poppy", "Rose"]
+    }, 
+
+    "Satyr": {
+        "male": ["Boreas", "Cypress", "Dionys", "Evander", "Faun", "Grove", "Helios", "Ixion", "Jasper", "Korax", "Lycan", "Moss", "Nyx", "Oak", "Pan"],
+        "female": ["Acantha", "Briar", "Chloe", "Daphne", "Echo", "Fawn", "Gaia", "Hazel", "Ivy", "Juniper", "Kore", "Laurel", "Maia", "Naia", "Orea"]
+    },
+
+    "Changeling": {
+        "male": ["Aurum", "Bin", "Cas", "Dox", "Eth", "Fey", "Gix", "Hex", "Jin", "Kesh", "Lam", "Mas", "Nix", "Ot", "Paik"],
+        "female": ["Aer", "Ber", "Cas", "Dah", "Esh", "Fey", "Gin", "Hars", "Ire", "Jix", "Kes", "Lam", "Mas", "Nul", "Ot"]
+    },
+    
+    "Shadar-kai": { 
+        "male": ["Albrek", "Baelo", "Carric", "Drannor", "Enna", "Galinndan", "Hadarai", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"],
+        "female": ["Adrie", "Baelynn", "Caelynn", "Dara", "Enna", "Galinndan", "Halimath", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"]
+    },
+    
+    "Drow": {
+        "male": ["Aelar", "Beiro", "Carric", "Drannor", "Enna", "Galinndan", "Hadarai", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"],
+        "female": ["Adrie", "Baelynn", "Caelynn", "Dara", "Enna", "Galinndan", "Halimath", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"]
+    },
+
+    "Elf-High": {
+        "male": ["Aelar", "Beiro", "Carric", "Drannor", "Enna", "Galinndan", "Hadarai", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"],
+        "female": ["Adrie", "Baelynn", "Caelynn", "Dara", "Enna", "Galinndan", "Halimath", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"]
+    },
+
+    "Elf-Wood": {
+        "male": ["Aelar", "Beiro", "Carric", "Drannor", "Enna", "Galinndan", "Hadarai", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"],
+        "female": ["Adrie", "Baelynn", "Caelynn", "Dara", "Enna", "Galinndan", "Halimath", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"]
+    },
+
+    "Elf-Sea": {
+        "male": ["Aelar", "Beiro", "Carric", "Drannor", "Enna", "Galinndan", "Hadarai", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"],
+        "female": ["Adrie", "Baelynn", "Caelynn", "Dara", "Enna", "Galinndan", "Halimath", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"]
+    },
+
+    "Elf-High_Half": {
+        "male": ["Aelar", "Beiro", "Carric", "Drannor", "Enna", "Galinndan", "Hadarai", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"],
+        "female": ["Adrie", "Baelynn", "Caelynn", "Dara", "Enna", "Galinndan", "Halimath", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"]
+    },
+
+    "Elf-Wood_Half": {
+        "male": ["Aelar", "Beiro", "Carric", "Drannor", "Enna", "Galinndan", "Hadarai", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"],
+        "female": ["Adrie", "Baelynn", "Caelynn", "Dara", "Enna", "Galinndan", "Halimath", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"]
+    },
+
+    "Elf-Sea_Half": {
+        "male": ["Aelar", "Beiro", "Carric", "Drannor", "Enna", "Galinndan", "Hadarai", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"],
+        "female": ["Adrie", "Baelynn", "Caelynn", "Dara", "Enna", "Galinndan", "Halimath", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis", "Naal", "Nutae", "Paelynn"]
+    },
+
+    "Deep Gnome": {
+        "male": ["Belwar", "Burrow", "Dimble", "Fonkin", "Gimble", "Glim", "Jebeddo", "Kellen", "Namfoodle", "Orryn", "Roondar", "Seebo", "Sindri", "Warryn", "Wrenn"],
+        "female": ["Bimpnottin", "Breena", "Caramip", "Carlin", "Donella", "Duvamil", "Ella", "Ellyjoybell", "Ellywick", "Lilli", "Loopmottin", "Lorilla", "Mardnab", "Nissa", "Nyx"]
+    },
+
+    "Forest Gnome": {
+        "male": ["Alston", "Boddynock", "Brocc", "Burgell", "Dimble", "Eldon", "Erky", "Fonkin", "Frug", "Gerrig", "Gimble", "Glim", "Jebeddo", "Kellen", "Namfoodle"],
+        "female": ["Bimpnottin", "Breena", "Caramip", "Carlin", "Donella", "Duvamil", "Ella", "Ellyjoybell", "Ellywick", "Lilli", "Loopmottin", "Lorilla", "Mardnab", "Nissa", "Nyx"]
+    },
+
+    "Rock Gnome": {
+        "male": ["Alston", "Boddynock", "Brocc", "Burgell", "Dimble", "Eldon", "Erky", "Fonkin", "Frug", "Gerrig", "Gimble", "Glim", "Jebeddo", "Kellen", "Namfoodle"],
+        "female": ["Bimpnottin", "Breena", "Caramip", "Carlin", "Donella", "Duvamil", "Ella", "Ellyjoybell", "Ellywick", "Lilli", "Loopmottin", "Lorilla", "Mardnab", "Nissa", "Nyx"]
+    },
+
+    "Stout Halfling": {
+        "male": ["Alton", "Ander", "Cade", "Corrin", "Eldon", "Errich", "Finnan", "Garret", "Lindal", "Lyle", "Merric", "Milo", "Osborn", "Perrin", "Reed"],
+        "female": ["Andry", "Bree", "Callie", "Cora", "Euphemia", "Jillian", "Kithri", "Lavinia", "Lidda", "Merla", "Nedda", "Paela", "Portia", "Seraphina", "Shaena"]
+    },
+
+    "Lightfoot Halfling": {
+        "male": ["Alton", "Ander", "Cade", "Corrin", "Eldon", "Errich", "Finnan", "Garret", "Lindal", "Lyle", "Merric", "Milo", "Osborn", "Perrin", "Reed"],
+        "female": ["Andry", "Bree", "Callie", "Cora", "Euphemia", "Jillian", "Kithri", "Lavinia", "Lidda", "Merla", "Nedda", "Paela", "Portia", "Seraphina", "Shaena"]
+    },
+
+    "Travelling Halfling": {
+        "male": ["Alton", "Ander", "Cade", "Corrin", "Eldon", "Errich", "Finnan", "Garret", "Lindal", "Lyle", "Merric", "Milo", "Osborn", "Perrin", "Reed"],
+        "female": ["Andry", "Bree", "Callie", "Cora", "Euphemia", "Jillian", "Kithri", "Lavinia", "Lidda", "Merla", "Nedda", "Paela", "Portia", "Seraphina", "Shaena"]
+    },
+
+    "Human-Basic": {
+        "male": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"],
+        "female": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"]
+    },
+
+    "Human-Air": {
+        "male": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"],
+        "female": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"]
+    },
+
+    "Human-Water": {
+        "male": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"],
+        "female": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"]
+    },
+
+    "Human-Fire": {
+        "male": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"],
+        "female": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"]
+    },
+
+    "Human-Earth": {
+        "male": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"],
+        "female": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"]
+    },
+
+    "Human-Variant": {
+        "male": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"],
+        "female": ["Aerdel", "Ahvak", "Aramil", "Aranck", "Berris", "Cithreth", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel"]
+    },
+
+    "Lizardfolk": {
+        "male": ["Aryte", "Baeshra", "Darastrix", "Garurt", "Ihtos", "Kepesk", "Korth", "Kosj", "Kothar", "Lham", "Mirik", "Okoth", "Sauriv", "Throden", "Thurkear"],
+        "female": ["Achuak", "Baeshra", "Darastrix", "Garurt", "Ihtos", "Kepesk", "Korth", "Kosj", "Kothar", "Lham", "Mirik", "Okoth", "Sauriv", "Throden", "Thurkear"]
+    },
+
+    "Kobold": {
+        "male": ["Arix", "Eks", "Ett", "Galax", "Garu", "Hakak", "Irtos", "Kashak", "Meepo", "Nakpik", "Pak", "Pex", "Quartle", "Quill", "Sik"],
+        "female": ["Arix", "Eks", "Ett", "Galax", "Garu", "Hakak", "Irtos", "Kashak", "Meepo", "Nakpik", "Pak", "Pex", "Quartle", "Quill", "Sik"]
+    },
+
+    "Tortle": {
+        "male": ["Aranck", "Berris", "Cithreth", "Drannor", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis"],
+        "female": ["Aranck", "Berris", "Cithreth", "Drannor", "Enna", "Galinndan", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel", "Lamlis", "Mindartis"]
+    },
+
+    "Triton": {
+        "male": ["Corus", "Delnis", "Jhimas", "Keros", "Molos", "Nalos", "Vodos", "Zunis", "Aryn", "Beltas", "Delos", "Halos", "Jeros", "Kyn", "Nelos"],
+        "female": ["Aryn", "Beltas", "Dara", "Hallia", "Kara", "Lara", "Mara", "Nara", "Sela", "Tara", "Vara", "Yara", "Zara", "Bela", "Cela"]
+    },
+
+    "Yuan-ti": {
+        "male": ["Asaph", "Djedkare", "Hapuseneb", "Kheti", "Masaharta", "Psamtik", "Ramessu", "Unas", "Weneg", "Yax", "Zannanza", "Ahmose", "Bakenranef", "Djoser", "Khafre"],
+        "female": ["Aneksi", "Beketaten", "Bunefer", "Dedyet", "Hatshepsut", "Hentie", "Iput", "Khaemwaset", "Merit", "Nefertiti", "Pypuy", "Qalhata", "Reditenes", "Sitamun", "Takhat"]
+    },
+
+    "Dragonborn Black": {
+        "male": ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadarr", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn"],
+        "female": ["Akra", "Biri", "Daar", "Farideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina"]
+    },
+
+    "Dragonborn Blue": {
+        "male": ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadarr", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn"],
+        "female": ["Akra", "Biri", "Daar", "Farideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina"]
+    },
+
+    "Dragonborn Green": {
+        "male": ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadarr", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn"],
+        "female": ["Akra", "Biri", "Daar", "Farideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina"]
+    },
+
+    "Dragonborn Red": {
+        "male": ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadarr", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn"],
+        "female": ["Akra", "Biri", "Daar", "Farideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina"]
+    },
+
+    "Dragonborn White": {
+        "male": ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadarr", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn"],
+        "female": ["Akra", "Biri", "Daar", "Farideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina"]
+    },
+
+    "Dragonborn Brass": {
+        "male": ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadarr", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn"],
+        "female": ["Akra", "Biri", "Daar", "Farideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina"]
+    },
+
+    "Dragonborn Bronze": {
+        "male": ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadarr", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn"],
+        "female": ["Akra", "Biri", "Daar", "Farideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina"]
+    },
+
+    "Dragonborn Copper": {
+        "male": ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadarr", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn"],
+        "female": ["Akra", "Biri", "Daar", "Farideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina"]
+    },
+
+    "Dragonborn Gold": {
+        "male": ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadarr", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn"],
+        "female": ["Akra", "Biri", "Daar", "Farideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina"]
+    },
+
+    "Dragonborn Silver": {
+        "male": ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadarr", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn"],
+        "female": ["Akra", "Biri", "Daar", "Farideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina"]
+    },
+
+    "Harengon": {
+        "male": ["Bramble", "Clover", "Cottontail", "Dandelion", "Flopsy", "Hopscotch", "Mopsy", "Pepper", "Thistle", "Thumper", "Whiskers", "Willow", "Binky", "Bounce", "Dash"],
+        "female": ["Bramble", "Clover", "Cottontail", "Dandelion", "Flopsy", "Hopscotch", "Mopsy", "Pepper", "Thistle", "Thumper", "Whiskers", "Willow", "Binky", "Bounce", "Dash"]
+    },
+
+    "Minotaur": {
+        "male": ["Asterion", "Beliminorgath", "Cinmac", "Dastrun", "Edder", "Galdar", "Ganthirogani", "Hecariverani", "Kyris", "Tosher", "Zurgas", "Brogmir", "Craghorn", "Ironhoof", "Stormhoof"],
+        "female": ["Ayasha", "Calina", "Fliara", "Helice", "Ketra", "Kyma", "Melane", "Naira", "Orelia", "Rufia", "Stelia", "Telia", "Yalis", "Yeshe", "Zabaia"]
+    },
+
+    "Centaur": {
+        "male": ["Bonmod", "Boruvo", "Chodi", "Drozan", "Kozim", "Mozi", "Oleksi", "Orval", "Radovas", "Rostis", "Svetlozar", "Tomis", "Trijiro", "Volim", "Vlodim"],
+        "female": ["Daiva", "Dunja", "Elnaya", "Galisnya", "Irinya", "Kotyali", "Lalya", "Litisia", "Madislak", "Mira", "Nedja", "Nikya", "Ostani", "Pinya", "Rada"]
+    },
+
+    "Tabaxi": {
+        "male": ["Cloud on the Mountaintop", "Five Timber", "Jade Shoe", "Left-Handed Hummingbird", "Seven Thundercloud", "Skirt of Snakes", "Smoking Mirror", "Two Sticks", "Birdcatcher", "Cloudchaser", "Drifting Cloud", "Laughing Storm", "Nine Lives", "Riverstone", "Wandering Star"],
+        "female": ["Birdcatcher", "Cloudchaser", "Drifting Cloud", "Laughing Storm", "Nine Lives", "Riverstone", "Wandering Star", "Bright Knife", "Dancing Flame", "Distant Rain", "Flying Cloud", "Gentle Breeze", "Hunting Cat", "Leaping Flame"]
+    },
+
+    "Aarakocra": {
+        "male": ["Aera", "Aial", "Aur", "Deekek", "Errk", "Heehk", "Ikki", "Kleeck", "Oorr", "Ouss", "Quaf", "Quierk", "Salleek", "Urreek", "Zeed"],
+        "female": ["Aera", "Aial", "Aur", "Deekek", "Errk", "Heehk", "Ikki", "Kleeck", "Oorr", "Ouss", "Quaf", "Quierk", "Salleek", "Urreek", "Zeed"]
+    },
+
+    "Kenku": {
+        "male": ["Booming", "Hammer", "Scar", "Sword", "Tattoo", "Whistle", "Chime", "Crow", "Flute", "Gong", "Rattle", "Ring", "Rustle", "Screech", "Whisper"],
+        "female": ["Booming", "Hammer", "Scar", "Sword", "Tattoo", "Whistle", "Chime", "Crow", "Flute", "Gong", "Rattle", "Ring", "Rustle", "Screech", "Whisper"]
+    },
+
+    "Ogre": {
+        "male": ["Bag", "Batk", "Besk", "Bog", "Dekk", "Druuk", "Feng", "Glonk", "Gnarsh", "Gorga", "Harg", "Henk", "Hogar", "Holg", "Imsh"],
+        "female": ["Bag", "Batk", "Besk", "Bog", "Dekk", "Druuk", "Feng", "Glonk", "Gnarsh", "Gorga", "Harg", "Henk", "Hogar", "Holg", "Imsh"]
+    },
+
+    "Orc/Half-Orc": {
+        "male": ["Dench", "Feng", "Gell", "Henk", "Holg", "Imsh", "Keth", "Krusk", "Mhurren", "Ront", "Shump", "Thokk", "Trag", "Ugor", "Varg"],
+        "female": ["Baggi", "Emen", "Engong", "Kansif", "Myev", "Neega", "Ovak", "Ownka", "Shautha", "Sutha", "Vola", "Volen", "Yevelda", "Zorga", "Zurga"]
+    },
+
+    "Firbolg": {
+        "male": ["Conn", "Dain", "Donnel", "Duggan", "Egan", "Galinndan", "Gareth", "Hadarai", "Ian", "Kael", "Liam", "Murdoch", "Oisin", "Ruairi", "Sean"],
+        "female": ["Aine", "Brigit", "Cara", "Dara", "Enna", "Galinndan", "Hadarai", "Iona", "Kiera", "Maeve", "Niamh", "Orla", "Riona", "Siobhan", "Una"]
+    },
+
+    "Goliath": {
+        "male": ["Aukan", "Eglath", "Gae-Al", "Gauthak", "Ilikan", "Keothi", "Kuori", "Lo-Kag", "Manneo", "Maveith", "Nalla", "Orilo", "Paavu", "Pethani", "Thalai"],
+        "female": ["Akannathi", "Eglath", "Gae-Al", "Gauthak", "Ilikan", "Keothi", "Kuori", "Lo-Kag", "Manneo", "Maveith", "Nalla", "Orilo", "Paavu", "Pethani", "Thalai"]
+    },
+
+    "Bugbear": {
+        "male": ["Batk", "Besk", "Bog", "Dekk", "Druuk", "Feng", "Glonk", "Gnarsh", "Gorga", "Harg", "Henk", "Hogar", "Holg", "Imsh", "Klag"],
+        "female": ["Batk", "Besk", "Bog", "Dekk", "Druuk", "Feng", "Glonk", "Gnarsh", "Gorga", "Harg", "Henk", "Hogar", "Holg", "Imsh", "Klag"]
+    },
+
+    "Goblin": {
+        "male": ["Booyahg", "Crord", "Drurrogz", "Glurppy", "Greasz", "Lenk", "Melk", "Nackle", "Namby", "Nappa", "Pog", "Ranzak", "Rickle", "Trizick", "Unkle"],
+        "female": ["Booyahg", "Crord", "Drurrogz", "Glurppy", "Greasz", "Lenk", "Melk", "Nackle", "Namby", "Nappa", "Pog", "Ranzak", "Rickle", "Trizick", "Unkle"]
+    },
+
+    "Hobgoblin": {
+        "male": ["Aruget", "Bertak", "Dargus", "Fenic", "Galtak", "Grendus", "Hakak", "Ironfist", "Kartak", "Maldred", "Nordak", "Oldaric", "Rask", "Tang", "Urgan"],
+        "female": ["Aruget", "Bertak", "Dargus", "Fenic", "Galtak", "Grendus", "Hakak", "Ironfist", "Kartak", "Maldred", "Nordak", "Oldaric", "Rask", "Tang", "Urgan"]
+    },
+
+    "Aasimar": {
+        "male": ["Aritian", "Beltin", "Cernan", "Cronwier", "Eran", "Ilamin", "Maudril", "Okrin", "Parant", "Tural", "Wyran", "Zaigan", "Aasim", "Darius", "Gabriel"],
+        "female": ["Arken", "Arsinoe", "Davina", "Drinma", "Imesah", "Lamlis", "Laumei", "Mialee", "Nijena", "Nutae", "Paelynn", "Phelorna", "Quildeth", "Silvyr", "Sumnes"]
+    },
+
+    "Tiefling": {
+        "male": ["Akmenos", "Amnon", "Barakas", "Damakos", "Ekemon", "Iados", "Kairon", "Leucis", "Melech", "Mordai", "Morthos", "Pelaios", "Skamos", "Therai", "Zeth"],
+        "female": ["Akta", "Anakir", "Bryseis", "Criella", "Damaia", "Ea", "Kallista", "Lerissa", "Makaria", "Nemeia", "Orianna", "Phelaia", "Rieta", "Thervan", "Valeria"]
+    },
+
+    "Air Genasi": {
+        "male": ["Boreas", "Gale", "Gust", "Mistral", "Sirocco", "Tempest", "Typhoon", "Vortex", "Whirlwind", "Zephyr", "Auster", "Cyclone", "Draft", "Gust", "Hurricane"],
+        "female": ["Aura", "Breeze", "Gale", "Mistral", "Nimbus", "Sirocco", "Tempest", "Typhoon", "Vortex", "Whirlwind", "Zephyr", "Auster", "Cyclone", "Draft", "Gust"]
+    },
+
+    "Earth Genasi": {
+        "male": ["Adamant", "Basalt", "Boulder", "Clay", "Flint", "Granite", "Marble", "Obsidian", "Onyx", "Quartz", "Sandstone", "Shale", "Slate", "Stone", "Talus"],
+        "female": ["Adamant", "Basalt", "Boulder", "Clay", "Flint", "Granite", "Marble", "Obsidian", "Onyx", "Quartz", "Sandstone", "Shale", "Slate", "Stone", "Talus"]
+    },
+
+    "Fire Genasi": {
+        "male": ["Blaze", "Cinder", "Ember", "Flame", "Flare", "Ignite", "Inferno", "Pyre", "Scorch", "Sear", "Spark", "Torch", "Wildfire", "Ash", "Brand"],
+        "female": ["Blaze", "Cinder", "Ember", "Flame", "Flare", "Ignite", "Inferno", "Pyre", "Scorch", "Sear", "Spark", "Torch", "Wildfire", "Ash", "Brand"]
+    },
+
+    "Water Genasi": {
+        "male": ["Brook", "Cascade", "Current", "Deluge", "Eddy", "Flow", "Geyser", "Harbor", "Lake", "Ocean", "Rain", "River", "Spring", "Stream", "Tide"],
+        "female": ["Brook", "Cascade", "Current", "Deluge", "Eddy", "Flow", "Geyser", "Harbor", "Lake", "Ocean", "Rain", "River", "Spring", "Stream", "Tide"]
+    }
+};
 
         // CR Weighting System
         const crWeights = [
