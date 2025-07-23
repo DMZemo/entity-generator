@@ -424,6 +424,70 @@
 
     <script>
         // Embedded JSON Data
+
+        // Flaws Data for different entity types
+        const flawsData = {
+          HUMANOID: [
+              "has a distinctive scar across their face",
+              "speaks with a noticeable lisp",
+              "is missing a finger on their dominant hand",
+              "has heterochromia (different colored eyes)",
+              "walks with a slight limp",
+              "has a nervous tic when lying",
+              "is colorblind",
+              "has a stutter when excited",
+              "is missing an ear",
+              "has a birthmark shaped like an animal",
+              "is extremely superstitious",
+              "has an irrational fear of a common object",
+              "compulsively counts things",
+              "cannot resist gambling",
+              "is overly trusting of strangers",
+              "has a terrible sense of direction",
+              "is prone to violent outbursts",
+              "is extremely vain about their appearance",
+              "has chronic insomnia",
+              "is addicted to a particular substance"
+          ],
+          FAUNA: [
+              "has a damaged wing/fin",
+              "is missing an eye",
+              "has patchy fur/scales",
+              "limps on one leg",
+              "has a broken horn/tusk",
+              "is unusually aggressive",
+              "is extremely skittish",
+              "has poor eyesight",
+              "makes unusual vocalizations",
+              "has a distinctive marking",
+              "is prone to sudden mood swings",
+              "has a chronic illness",
+              "is overly curious",
+              "is unable to swim",
+              "is extremely territorial",
+          ],
+          FLORA: [
+              "has withered leaves",
+              "grows in an unusual shape",
+              "has discolored patches",
+              "produces bitter fruit",
+              "attracts harmful insects",
+              "has thorns in unexpected places",
+              "wilts easily in sunlight",
+              "has an unpleasant odor",
+              "grows much slower than normal",
+              "has roots that damage nearby plants",
+              "is prone to fungal infections",
+              "has a tendency to spread uncontrollably",
+              "is highly flammable",
+              "has a toxic sap",
+              "is susceptible to drought",
+              "has a brittle stem",
+              "is prone to wilting in cold weather",
+              "has a tendency to attract pests",
+          ]
+        };
+
         const entityData = [
   {
     "Biome": "ATMOSPHERE",
@@ -62989,7 +63053,8 @@
             const flawID = `${d1}.${d2}.${d3}`;
 
             // Look up the flaw in the JSON data structure
-            const flaw = humanoidData.flaws[flawID];
+            const flawObject = humanoidData.flaws.find(f => f.ID === flawID);
+            const flaw = flawObject ? flawObject.Flaw : "Unknown flaw";
 
             // Display the result
             console.log(`Flaw ID: ${flawID}`);
