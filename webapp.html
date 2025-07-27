@@ -63124,32 +63124,99 @@
         }
 
         function determineMethod(abilities) {
-            const abilityValues = Object.values(abilities);
+            const abilityOrder = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
+            const abilityValues = abilityOrder.map(key => abilities[key]);
             const maxValue = Math.max(...abilityValues);
             const minValue = Math.min(...abilityValues);
-            
-            // Find which ability is highest
-            const maxAbility = Object.keys(abilities).find(key => abilities[key] === maxValue);
-            
+
+            // Find which ability is highest (first in order if tie)
+            const maxAbility = abilityOrder[abilityValues.indexOf(maxValue)];
+
+            // Find which ability is lowest (first in order if tie)
+            const minAbility = abilityOrder[abilityValues.indexOf(minValue)];
+
             const methodMap = {
-                Strength: "Physical Prowess",
-                Dexterity: "Physical Prowess", 
-                Constitution: "Physical Prowess",
-                Intelligence: "Mental Acuity",
-                Wisdom: "Divine Connection",
-                Charisma: "Social Manipulation"
+                "STR-STR":{"Best":"STR","Worst":"STR","Title":"The Conqueror","Description":"Direct brute force","MICE":"Ego"},
+                "STR-DEX":{"Best":"STR","Worst":"DEX","Title":"The Juggernaut","Description":"Crashes through before finesse","MICE":"Ego/Coercion"},
+                "STR-CON":{"Best":"STR","Worst":"CON","Title":"The Dying Flame","Description":"Pushes through pain to dominate","MICE":"Ego"},
+                "STR-INT":{"Best":"STR","Worst":"INT","Title":"Muscle-for-Hire","Description":"Smart people pay me","MICE":"Money"},
+                "STR-WIS":{"Best":"STR","Worst":"WIS","Title":"Righteous Fist","Description":"Guided by instinct, not thought","MICE":"Ideology"},
+                "STR-CHA":{"Best":"STR","Worst":"CHA","Title":"The Enforcer","Description":"Might makes right, speaks with fists","MICE":"Coercion"},
+                "DEX-STR":{"Best":"DEX","Worst":"STR","Title":"The Duelist","Description":"Quick and deadly, ignores brute strength","MICE":"Ego"},
+                "DEX-DEX":{"Best":"DEX","Worst":"DEX","Title":"The Phantom","Description":"Precision defines them","MICE":"Ego"},
+                "DEX-CON":{"Best":"DEX","Worst":"CON","Title":"The Fading Star","Description":"Burns out fast, flashes bright","MICE":"Ego"},
+                "DEX-INT":{"Best":"DEX","Worst":"INT","Title":"Trickster","Description":"Outsmarts enemies through movement","MICE":"Money/Ideology"},
+                "DEX-WIS":{"Best":"DEX","Worst":"WIS","Title":"Nimble Sage","Description":"Leaps first, thinks second (Ideology)","MICE":"Ideology"},
+                "DEX-CHA":{"Best":"DEX","Worst":"CHA","Title":"Silent Blade","Description":"Charismas for fools; actions speak (Ideology/Coercion)","MICE":"Ideology/Coercion"},
+                "CON-STR":{"Best":"CON","Worst":"STR","Title":"Iron Bastion","Description":"Outlasts any opponent (Ego)","MICE":"Ego"},
+                "CON-DEX":{"Best":"CON","Worst":"DEX","Title":"Lumbering Wall","Description":"Doesnt dodge, doesnt need to (Ego/Coercion)","MICE":"Ego/Coercion"},
+                "CON-CON":{"Best":"CON","Worst":"CON","Title":"Survivor","Description":"Simply wont die (Ego)","MICE":"Ego"},
+                "CON-INT":{"Best":"CON","Worst":"INT","Title":"Slow Thinker","Description":"Goes with gut, doesnt get it but doesnt stop (Coercion)","MICE":"Coercion"},
+                "CON-WIS":{"Best":"CON","Worst":"WIS","Title":"Stoic Watcher","Description":"Feels deeply, says little (Ideology)","MICE":"Ideology"},
+                "CON-CHA":{"Best":"CON","Worst":"CHA","Title":"Stone Face","Description":"Emotionally opaque, unimpressed by charm (Ego)","MICE":"Ego"},
+                "INT-STR":{"Best":"INT","Worst":"STR","Title":"The Mastermind","Description":"Outsmarts stronger foes with plans (Ideology/Money)","MICE":"Ideology/Money"},
+                "INT-DEX":{"Best":"INT","Worst":"DEX","Title":"Calculated Gambler","Description":"Risks based on odds, not instinct (Money)","MICE":"Money"},
+                "INT-CON":{"Best":"INT","Worst":"CON","Title":"Cold Logician","Description":"Ignores bodys limits in pursuit of perfection (Ideology)","MICE":"Ideology"},
+                "INT-INT":{"Best":"INT","Worst":"INT","Title":"Genius","Description":"Always the smartest in the room (Ego)","MICE":"Ego"},
+                "INT-WIS":{"Best":"INT","Worst":"WIS","Title":"Atheistic Rationalist","Description":"Rejects gut, embraces reason (Ideology)","MICE":"Ideology"},
+                "INT-CHA":{"Best":"INT","Worst":"CHA","Title":"Socially Tone-Deaf Schemer","Description":"Genius with zero charm (Money/Ego)","MICE":"Money/Ego"},
+                "WIS-STR":{"Best":"WIS","Worst":"STR","Title":"Wise Warrior","Description":"Knows when to fight (Ideology)","MICE":"Ideology"},
+                "WIS-DEX":{"Best":"WIS","Worst":"DEX","Title":"Reactive Defender","Description":"Reads movements, not flashy (Ideology)","MICE":"Ideology"},
+                "WIS-CON":{"Best":"WIS","Worst":"CON","Title":"Naturalist","Description":"Understands limits of the body, embraces them (Ideology)","MICE":"Ideology"},
+                "WIS-INT":{"Best":"WIS","Worst":"INT","Title":"Shaman-Savant","Description":"Mystical over intellectual (Ideology)","MICE":"Ideology"},
+                "WIS-WIS":{"Best":"WIS","Worst":"WIS","Title":"Sage","Description":"Sees all, acts with grace (Ego/Ideology)","MICE":"Ego/Ideology"},
+                "WIS-CHA":{"Best":"WIS","Worst":"CHA","Title":"Humble Prophet","Description":"Not persuasive, but truthful (Ideology)","MICE":"Ideology"},
+                "CHA-STR":{"Best":"CHA","Worst":"STR","Title":"The Gladiator","Description":"Wins through spectacle and strength (Ego/Money)","MICE":"Ego/Money"},
+                "CHA-DEX":{"Best":"CHA","Worst":"DEX","Title":"The Showman","Description":"Flashy, distracts from lack of skill (Ego)","MICE":"Ego"},
+                "CHA-CON":{"Best":"CHA","Worst":"CON","Title":"The Face","Description":"Inspires despite fragility (Ego)","MICE":"Ego"},
+                "CHA-INT":{"Best":"CHA","Worst":"INT","Title":"Silver-Tongued Devil","Description":"Lies when smarts fall short (Money/Coercion)","MICE":"Money/Coercion"},
+                "CHA-WIS":{"Best":"CHA","Worst":"WIS","Title":"Charismatic Fool","Description":"Believed because they're confident, not wise (Ego)","MICE":"Ego"},
+                "CHA-CHA":{"Best":"CHA","Worst":"CHA","Title":"Icon","Description":"Charisma as power incarnate (Ego/Ideology)","MICE":"Ego/Ideology"}
             };
 
-            return methodMap[maxAbility] || randomChoice(humanoidData.methods);
+            // Convert to short ability codes for methodMap lookup
+            function shortCode(ability) {
+                switch (ability) {
+                    case "Strength": return "STR";
+                    case "Dexterity": return "DEX";
+                    case "Constitution": return "CON";
+                    case "Intelligence": return "INT";
+                    case "Wisdom": return "WIS";
+                    case "Charisma": return "CHA";
+                    default: return ability;
+                }
+            }
+
+            const methodID = `${shortCode(maxAbility)}-${shortCode(minAbility)}`;
+            const method = methodMap[methodID] || {
+                Best: shortCode(maxAbility),
+                Worst: shortCode(minAbility),
+                Title: "Unknown Method",
+                Description: "No description available",
+                MICE: "Unknown"
+            };
+            // Return a formatted string with method details
+            return `${method.Title}: ${method.Description} (Best: ${method.Best}, Worst: ${method.Worst}, MICE: ${method.MICE})`;
         }
 
         function generateAlignment() {
-            const alignments = [
-                "Lawful Good", "Neutral Good", "Chaotic Good",
-                "Lawful Neutral", "True Neutral", "Chaotic Neutral",
-                "Lawful Evil", "Neutral Evil", "Chaotic Evil"
-            ];
-            return randomChoice(alignments);
+          const alignments = [
+            "Lawful Good", "Neutral Good", "Chaotic Good",
+            "Lawful Neutral", "True Neutral", "Chaotic Neutral",
+            "Lawful Evil", "Neutral Evil", "Chaotic Evil"
+          ];
+          const weights = [
+            0.15, // Lawful Good
+            0.18, // Neutral Good
+            0.12, // Chaotic Good
+            0.12, // Lawful Neutral
+            0.18, // True Neutral
+            0.12, // Chaotic Neutral
+            0.04, // Lawful Evil
+            0.07, // Neutral Evil
+            0.02  // Chaotic Evil (very rare)
+          ];
+          return weightedChoice(alignments, weights);
         }
 
         function getXPForType(type) {
